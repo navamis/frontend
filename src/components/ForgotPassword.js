@@ -32,6 +32,7 @@ export default function ForgotPassword() {
       style={{ minHeight: "100vh" }}
       >
     <>
+     <div className="w-100 d-flex flex-column"  style={{ maxWidth: "300px" }}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Password Reset</h2>
@@ -53,6 +54,7 @@ export default function ForgotPassword() {
       </Card>
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
+      </div>
       </div>
     </>
     </Container>

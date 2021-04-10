@@ -8,6 +8,7 @@ class UpdatePayment extends Component {
     super();
     this.paymentId = React.createRef();
     this.emailId = React.createRef();
+    this.applicantFullName=React.createRef();
     this.paymentAmount = React.createRef();
     this.paymentDescription= React.createRef();
     this.paymentStatus= React.createRef();
@@ -22,7 +23,10 @@ class UpdatePayment extends Component {
       emailId: this.emailId.current.value,
       paymentAmount: this.paymentAmount.current.value,
       paymentDescription: this.paymentDescription.current.value,
-      paymentStatus : this.paymentStatus.current.value
+      paymentStatus : this.paymentStatus.current.value,
+      application:{
+        applicantFullName:this.applicantFullName.current.value
+      }
     };
 
     this.props.onUpdatePayment(payment)
@@ -46,6 +50,14 @@ class UpdatePayment extends Component {
               placeholder="paymentId"
             />
             </div>
+            <div className="input-group mb-3">
+            <input
+              ref={this.applicantFullName}
+              type="text"
+              className="form-control"
+              placeholder="applicantFullName"
+            />
+          </div>
           <div className="input-group mb-3">
             <input
               ref={this.paymentDescription}

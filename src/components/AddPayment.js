@@ -8,6 +8,7 @@ class AddPayment extends Component {
     super();
     this.emailId = React.createRef();
     this.paymentAmount = React.createRef();
+    this.applicantFullName=React.createRef();
     this.paymentDescription = React.createRef();
     this.paymentDate = React.createRef();
     this.paymentStatus =  React.createRef();
@@ -21,6 +22,9 @@ class AddPayment extends Component {
       paymentDate: this.paymentDate.current.value,
       paymentStatus: this.paymentStatus.current.value,
       emailId : this.emailId.current.value,
+      application:{
+        applicantFullName:this.applicantFullName.current.value
+      }
     };
 
 
@@ -37,6 +41,14 @@ render(){
             type="text"
             className="form-control"
             placeholder="emailId"
+          />
+        </div>
+        <div className="input-group mb-3">
+          <input
+            ref={this.applicantFullName}
+            type="text"
+            className="form-control"
+            placeholder="applicantFullName"
           />
         </div>
         <div className="input-group mb-3">

@@ -6,7 +6,7 @@ import { Link, useHistory } from "react-router-dom"
 export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
-  const { login } = useAuth()
+  const { login, app } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -26,13 +26,25 @@ export default function Login() {
     setLoading(false)
   }
 
+  
+  async function handleOAS() {
+    setError("");
+
+    try {
+      await app();
+      history.push("/homepage");
+    } catch {
+      setError("Failed to fetch data");
+    }
+  }
+
   return (
      <Container
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
       >
     <>
-    <div className="w-100" style={{ maxWidth: "400px" }}>
+    <div className="w-100 d-flex flex-column"  style={{ maxWidth: "300px" }}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Log In</h2>
@@ -46,6 +58,7 @@ export default function Login() {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
+             
             <Button disabled={loading} className="w-100" type="submit">
               Log In
             </Button>
@@ -58,6 +71,15 @@ export default function Login() {
       <div className="d-flex align-items-center justify-content-center">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
+                
+          <div className="d-flex align-items-center justify-content-center">
+            <text>Or</text>
+          </div>
+         <div className="d-flex align-items-center justify-content-center">
+            <Link variant="link" to="/homepage" onClick={handleOAS}>
+              Continue to Home Page
+            </Link>
+          </div>
         </div>
     </>
     </Container>

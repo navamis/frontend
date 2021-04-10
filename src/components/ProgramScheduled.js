@@ -20,12 +20,13 @@ class ProgramScheduled extends Component {
           <img src="programScheduled.png" width = "50%" className="card-img-top" alt="..."/>
           <div className="card-body">
           <span className="badge rounded-pill bg-dark">ProgramSchedule Id :{this.props.scheduleId}</span>
-             {/* <h5 className="card-title">Branch Name        :{this.props.branchName}</h5>
+             <h5 className="card-title">Branch Name        :{this.props.branchName}</h5>
             <p className="card-text">Course Name     :{this.props.courseName}</p>
-            <p className="card-text">Program Name     :{this.props.programName}</p> */}
-            {/*<p className="card-text">College      :{this.props.college}</p>
-            <p className="card-text">University      :{this.props.university}</p> */}
-            <p className="card-text">Program:{this.props.programName}</p>
+            <p className="card-text">Eligibility     :{this.props.eligibility}</p>
+            <p className="card-text">Program Name     :{this.props.programName}</p> 
+            {/* <p className="card-text">College Name      :{this.props.collegeName}</p> */}
+            {/* <p className="card-text">University      :{this.props.university}</p> */}
+            {/* <p className="card-text">Program</p> */}
             <p className="card-text">StartDate:{this.props.startDate}</p>
             <p className="card-text">EndDate:{this.props.endDate}</p>
 

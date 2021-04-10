@@ -26,8 +26,8 @@ class AddBranch extends Component {
 
   render() {
     return (
-      <div>
-        <div className="w-50 h-10 user-form">
+      <div className= "align fixed-center" style={{position: "center"}}>
+        <div className="w-50 h-10 user-form ">
           <div className="input-group mb-3">
             <input
               ref={this.branchName}

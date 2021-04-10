@@ -34,9 +34,10 @@ export default function Signup() {
   return (
      <Container
       className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh", width: "40%" }}
+      style={{ minHeight: "100vh"}}
       >
     <>
+    <div className="w-100 d-flex flex-column"  style={{ maxWidth: "300px" }}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
@@ -60,8 +61,9 @@ export default function Signup() {
           </Form>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
+      <div className="w-100 text-center justify-content-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
+      </div>
       </div>
     </>
     </Container>

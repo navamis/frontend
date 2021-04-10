@@ -7,11 +7,10 @@ class UpdateProgramScheduled extends Component {
   constructor() {
     super();
     this.scheduleId=React.createRef();
-    // this.branch=React.createRef();
-    // this.course=React.createRef();
-    // this.program=React.createRef();
-    // this.college=React.createRef();
-    // this.university=React.createRef();
+    this.branchName=React.createRef();
+    this.courseName=React.createRef();
+    this.eligibility=React.createRef();
+    this.programName=React.createRef();
     this.startDate=React.createRef();
     this.endDate=React.createRef();
     this.state = {message: ''} 
@@ -21,13 +20,16 @@ class UpdateProgramScheduled extends Component {
     console.log("updating...");
     var programScheduled = {
         scheduleId:this.scheduleId.current.value,
-        // branch: this.branch.current.value,
-        // course: this.course.current.value,
-        // program: this.program.current.value,
-        // college: this.college.current.value,
-        // university: this.university.current.value,
+        branch:{branchName: this.branchName.current.value
+        },
+        course:{courseName: this.courseName.current.value,
+          eligibility: this.eligibility.current.value
+        },
         startDate: this.startDate.current.value,
-        endDate: this.endDate.current.value
+        endDate: this.endDate.current.value,
+        program:{
+          programName: this.programName.current.value
+      }
     };
 
     this.props.onUpdateProgramScheduled(programScheduled)
@@ -50,46 +52,38 @@ class UpdateProgramScheduled extends Component {
               placeholder="scheduleId"
             />
           </div>
-         {/*  <div className="input-group mb-3">
-            <input
-              ref={this.branch}
-              type="text"
-              className="form-control"
-              placeholder="branch"
-            />
-          </div>
           <div className="input-group mb-3">
-            <input
-              ref={this.course}
-              type="text"
-              className="form-control"
-              placeholder="course"
-            />
-          </div>
-          <div className="input-group mb-3">
-            <input
-              ref={this.program}
-              type="text"
-              className="form-control"
-              placeholder="program"
-            />
-          </div>
-          <div className="input-group mb-3">
-            <input
-              ref={this.college}
-              type="text"
-              className="form-control"
-              placeholder="college"
-            />
-          </div>
-          <div className="input-group mb-3">
-            <input
-              ref={this.university}
-              type="text"
-              className="form-control"
-              placeholder="university"
-            />
-          </div> */}
+          <input
+            ref={this.branchName}
+            type="text"
+            className="form-control"
+            placeholder="branchName"
+          />
+        </div>
+        <div className="input-group mb-3">
+          <input
+            ref={this.courseName}
+            type="text"
+            className="form-control"
+            placeholder="courseName"
+          />
+        </div>
+        <div className="input-group mb-3">
+          <input
+            ref={this.eligibility}
+            type="text"
+            className="form-control"
+            placeholder="eligibility"
+          />
+        </div>
+        <div className="input-group mb-3">
+          <input
+            ref={this.programName}
+            type="text"
+            className="form-control"
+            placeholder="programName"
+          />
+        </div>
           <div className="input-group mb-3">
             <input
               ref={this.startDate}

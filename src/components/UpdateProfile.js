@@ -47,6 +47,7 @@ export default function UpdateProfile() {
       style={{ minHeight: "100vh" }}
       >
     <>
+     <div className="w-100 d-flex flex-column"  style={{ maxWidth: "300px" }}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Update Profile</h2>
@@ -85,6 +86,7 @@ export default function UpdateProfile() {
       </Card>
       <div className="w-100 text-center mt-2">
         <Link to="/dashboard">Cancel</Link>
+      </div>
       </div>
     </>
     </Container>

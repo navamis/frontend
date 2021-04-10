@@ -26,6 +26,9 @@ class Payment extends Component {
           </span>
           <h5 className="card-text">Email:{this.props.emailId}</h5>
           <p className="card-text">
+            ApplicantFullName :{this.props.applicantFullName}
+          </p>
+          <p className="card-text">
             Payment Amount :{this.props.paymentAmount}
           </p>
           <p className="card-text">

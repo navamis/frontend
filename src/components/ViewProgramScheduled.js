@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProgramScheduled from "./ProgramScheduled.js";
 import * as actions from '../actions/programScheduled';
-
+// import Program from "./Program.js"
 
 class ViewProgramScheduled extends Component {
   constructor() {
     super();
-    this.state = { programSchedules: [],program:[] };
+    this.state = { programSchedules: [] };
   }
   
   fetchData()
@@ -22,25 +22,22 @@ class ViewProgramScheduled extends Component {
  
 
   render() {
-    // if(this.props.program===undefined){
-    //   return(
-    //     <h1>Loading....</h1>
-    //   )
-    // }
-    var programScheduledList = this.props.programSchedules.map((programScheduled,program, i) => {
+    var programScheduledList = this.props.programSchedules.map((programScheduled, i) => {
       return (
         <ProgramScheduled
           key={programScheduled.scheduleId}
           scheduleId={programScheduled.scheduleId}
-          branchName={programScheduled.branchName}
-          courseName={programScheduled.courseName}
-          programName={program.programName}
-          // college={programScheduled.college}
-          // university={programScheduled.university}
           startDate={programScheduled.startDate}
           endDate={programScheduled.endDate}
+          branchName={programScheduled.branch.branchName}
+          courseName={programScheduled.course.courseName}
+          eligibility={programScheduled.course.eligibility}
+          programName={programScheduled.program.programName}
+          // collegeName={programScheduled.college.collegeName}
+          // university={programScheduled.university}   
           fetchData={this.fetchData.bind(this)}
-        ></ProgramScheduled>
+        >
+        </ProgramScheduled>
       );
     });
 

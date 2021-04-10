@@ -7,17 +7,18 @@ const initialState = {
   courses : [],
   branches:[],
   programs:[],
+  applications: [],
+  data: null,
   message: "",
 };
 
 const reducer = (state = initialState, { type, payload }) => {
   console.log(type);
   switch (type) {
-    case "FIND_PAYMENTS":
-      return { ...state, payments: payload, message: "" };
 
-    case "FIND_APPLICATION":
-      return { ...state, payments: payload, message: "" };
+      
+    case "FIND_PAYMENTS":
+      return { ...state, payments: payload, message: "" };    
 
     case "FIND_PAYMENT":
       return { ...state, payments: payload, updatePayment: payload.payment };
@@ -181,6 +182,23 @@ const reducer = (state = initialState, { type, payload }) => {
     case "UPDATE_UNIVERSITY":
         console.log(payload.message)
             return {...state, universitys: state.universitys,message:payload.message}           
+
+    case "ADD_APPLICATION":
+        return { ...state, data: payload };
+  
+    case "All_APPLICATIONS":
+      return {...state, applications: payload}
+  
+      case "DELETE_APPLICATION":
+        return { ...state, data: payload };
+  
+      case "UPDATE_APPLICATION":
+        return { ...state, data: payload };
+  
+
+
+
+
 
     default:
       return state;

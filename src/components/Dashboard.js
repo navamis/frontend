@@ -24,7 +24,7 @@ export default function Dashboard() {
 
     try {
       await app();
-      history.push("/dashboard");
+      history.push("/homepage");
     } catch {
       setError("Failed to fetch data");
     }
@@ -36,6 +36,7 @@ export default function Dashboard() {
       style={{ minHeight: "100vh" }}
       >
     <>
+     <div className="w-100 d-flex flex-column"  style={{ maxWidth: "300px" }}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
@@ -54,10 +55,11 @@ export default function Dashboard() {
           <text>Or</text>
         </div>
         <div>
-          <Link variant="link" onClick={handleOAS}>
-            Continue to Home Page
+          <Link to= "/homepage" variant="link" onClick={handleOAS}>
+            Explore Online Admission System
           </Link>
         </div>
+      </div>
       </div>
     </>
     </Container>
