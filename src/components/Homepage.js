@@ -36,6 +36,7 @@ import AddApplication from "./AddApplication";
 import ViewApplication from "./ViewApplication";
 import UpdateApplication from "./UpdateApplication";
 import DeleteApplication from "./DeleteApplication";
+import Login from "./Login"
 
 export default function Homepage() {
   return (
@@ -68,6 +69,12 @@ export default function Homepage() {
                 <NavDropdown.Item href="#action/3.2" className="bg-secondary">
                   <NavLink className="nav-link" to="/addlogin" variant="dark">
                     Add Login
+                  </NavLink>
+                </NavDropdown.Item>
+
+                <NavDropdown.Item href="#action/3.3" className="bg-secondary">
+                  <NavLink className="nav-link" to="/login" variant="dark">
+                    Logout
                   </NavLink>
                 </NavDropdown.Item>
               </Nav>
@@ -298,6 +305,10 @@ export default function Homepage() {
           <Route path="/viewlogin">
             <ViewLogin />
           </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+
           <Route path="/change/:userId" component={ChangePassword}></Route>
 
           <Route path="/addcollege">
