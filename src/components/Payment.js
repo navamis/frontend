@@ -5,8 +5,6 @@ import * as actions from "../actions/payment";
 
 class Payment extends Component {
   deletePayment(paymentId) {
-    //console.log("deleting payment "  + id)
-
     this.props.onDeletePayment(paymentId);
   }
 
@@ -15,7 +13,6 @@ class Payment extends Component {
       <div className="card">
         <img
           src="stock-photography.jpg"
-          // width="50%"
           className="card-img-top"
           alt="..."
           style={{ height: "250px", objectFit: "contain" }}
@@ -38,7 +35,6 @@ class Payment extends Component {
             Payment Status :{this.props.paymentStatus}
           </p>
           <p className="card-text">Payment Date :{this.props.paymentDate}</p>
-          {/* <p className="card-text">Application Id      :{this.props.applicationId}</p> */}
 
           <button
             className="btn btn-danger"

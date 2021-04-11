@@ -1,26 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import College from "./College.js";
-import * as actions from '../actions/college'
+import * as actions from "../actions/college";
 
 class ViewCollege extends Component {
   constructor() {
     super();
     this.state = { colleges: [] };
   }
-  
-  fetchData()
-  {
 
-    console.log("fetching data.....")
-
+  fetchData() {
+    console.log("fetching data.....");
   }
 
   componentDidMount() {
-    this.props.onFetchColleges()
+    this.props.onFetchColleges();
   }
-
- 
 
   render() {
     var collegesList = this.props.colleges.map((college, i) => {
@@ -36,7 +31,6 @@ class ViewCollege extends Component {
           country={college.address.country}
           zipcode={college.address.zipcode}
           landmark={college.address.landmark}
-       
           fetchData={this.fetchData.bind(this)}
         ></College>
       );
@@ -50,17 +44,16 @@ class ViewCollege extends Component {
   }
 }
 
-
-const mapStateToProps = (state) =>{
-  return{
-    colleges : state.colleges
-  }
-}
-
-const mapDispatchToState = (dispatch) =>{
+const mapStateToProps = (state) => {
   return {
-    onFetchColleges : () => dispatch(actions.fetchCollege())
-  }
-}
+    colleges: state.colleges,
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToState)(ViewCollege);
+const mapDispatchToState = (dispatch) => {
+  return {
+    onFetchColleges: () => dispatch(actions.fetchCollege()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToState)(ViewCollege);

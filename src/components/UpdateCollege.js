@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from '../actions/college';
-
+import * as actions from "../actions/college";
 
 class UpdateCollege extends Component {
   constructor() {
     super();
     this.collegeRegId = React.createRef();
     this.collegeName = React.createRef();
-    this.address = React.createRef();
-   
-    this.state = { user : {},message: "" };
+    this.addressId = React.createRef();
+
+    this.state = { user: {}, message: "" };
   }
 
   updateCollege() {
@@ -18,33 +17,35 @@ class UpdateCollege extends Component {
 
     var college = {
       collegeRegId: this.collegeRegId.current.value,
-     collegeName: this.collegeName.current.value,
-      address: this.address.current.value,
-    
+      collegeName: this.collegeName.current.value,
+      addressId: this.addressId.current.value,
     };
 
-    this.props.onUpdateCollege(college)
+    this.props.onUpdateCollege(college);
   }
-  componentDidMount()
-  {
-
-    
-
-  }
-  render(){
+  componentDidMount() {}
+  render() {
     return (
       <div>
         <div className="w-50 user-form">
-        <div className="input-group mb-3">
+          <div className="input-group mb-3">
             <input
               ref={this.collegeRegId}
-              value = {this.props.collegeRegId}
-          
+              value={this.props.collegeRegId}
               type="Integer"
               className="form-control"
-              placeholder="ID"
+              placeholder="College ID"
             />
-            </div>
+          </div>
+          <div className="input-group mb-3">
+            <input
+              ref={this.addressId}
+              value={this.props.addressId}
+              type="Integer"
+              className="form-control"
+              placeholder="Address Id"
+            />
+          </div>
           <div className="input-group mb-3">
             <input
               ref={this.collegeName}
@@ -53,12 +54,7 @@ class UpdateCollege extends Component {
               placeholder="Name"
             />
           </div>
-        
-         
 
-          
-         
-        
           <button
             className="add-btn btn btn-primary"
             onClick={this.updateCollege.bind(this)}
@@ -72,20 +68,18 @@ class UpdateCollege extends Component {
       </div>
     );
   }
-  }
+}
 
-  const mapStateToProps = (state) =>{
-    return{
-      message : state.message
-    }
-  }
-  
-  const mapDispatchToState = (dispatch)=>{
-  
-    return {
-      onUpdateCollege : (payload) => dispatch(actions.EditCollege(payload))
-    }
-  
-  }
-  
-  export default connect(mapStateToProps,mapDispatchToState)(UpdateCollege)
+const mapStateToProps = (state) => {
+  return {
+    message: state.message,
+  };
+};
+
+const mapDispatchToState = (dispatch) => {
+  return {
+    onUpdateCollege: (payload) => dispatch(actions.EditCollege(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToState)(UpdateCollege);

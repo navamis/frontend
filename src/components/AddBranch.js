@@ -5,28 +5,24 @@ import * as actions from "../actions/branch";
 class AddBranch extends Component {
   constructor() {
     super();
-    
-        this.branchName=React.createRef();
-        this.branchDescription=React.createRef();
-        this.state = {message: ""}
 
+    this.branchName = React.createRef();
+    this.branchDescription = React.createRef();
+    this.state = { message: "" };
   }
 
   addBranch() {
     var branch = {
-        branchName:this.branchName.current.value,
-        branchDescription:this.branchDescription.current.value
+      branchName: this.branchName.current.value,
+      branchDescription: this.branchDescription.current.value,
     };
 
-
-    this.props.onAddBranch(branch)
-
-    
+    this.props.onAddBranch(branch);
   }
 
   render() {
     return (
-      <div className= "align fixed-center" style={{position: "center"}}>
+      <div className="align fixed-center" style={{ position: "center" }}>
         <div className="w-50 h-10 user-form ">
           <div className="input-group mb-3">
             <input
@@ -44,8 +40,7 @@ class AddBranch extends Component {
               placeholder="branchDescription"
             />
           </div>
-          
-        
+
           <button
             className="add-btn btn btn-primary"
             onClick={this.addBranch.bind(this)}
@@ -61,19 +56,17 @@ class AddBranch extends Component {
   }
 }
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) => {
+  return {
+    message: state.message,
+    branches: state.branches,
+  };
+};
 
-  return{
-    message : state.message,
-    branches : state.branches
-  }
+const mapDispatchToState = (dispatch) => {
+  return {
+    onAddBranch: (payload) => dispatch(actions.addBranch(payload)),
+  };
+};
 
-}
-
-const mapDispatchToState = (dispatch) =>{
-  return{
-    onAddBranch : (payload) => dispatch(actions.addBranch(payload))
-  }
-}
-
-export default connect(mapStateToProps,mapDispatchToState)(AddBranch)
+export default connect(mapStateToProps, mapDispatchToState)(AddBranch);

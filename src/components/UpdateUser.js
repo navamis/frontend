@@ -1,7 +1,6 @@
- import React, { Component } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from '../actions/user';
-
+import * as actions from "../actions/user";
 
 class UpdateUser extends Component {
   constructor() {
@@ -9,11 +8,11 @@ class UpdateUser extends Component {
     this.userId = React.createRef();
     this.firstName = React.createRef();
     this.middleName = React.createRef();
-    this.lastName= React.createRef();
-    this.email= React.createRef();
-    this.mobileNumber= React.createRef();
-    this.aadharCardNo= React.createRef();
-    this.state = { user : {},message: "" };
+    this.lastName = React.createRef();
+    this.email = React.createRef();
+    this.mobileNumber = React.createRef();
+    this.aadharCardNo = React.createRef();
+    this.state = { user: {}, message: "" };
   }
 
   updateUser() {
@@ -26,31 +25,26 @@ class UpdateUser extends Component {
       lastName: this.lastName.current.value,
       email: this.email.current.value,
       mobileNumber: this.mobileNumber.current.value,
-      aadharCardNo : this.aadharCardNo.current.value
+      aadharCardNo: this.aadharCardNo.current.value,
     };
 
-    this.props.onUpdateUser(user)
+    this.props.onUpdateUser(user);
   }
-  componentDidMount()
-  {
-
-    
-
-  }
-  render(){
+  componentDidMount() {}
+  render() {
     return (
       <div>
         <div className="w-50 user-form">
-        <div className="input-group mb-3">
+          <div className="input-group mb-3">
             <input
               ref={this.userId}
-               value = {this.props.match.params.userId}
-               disabled
+              value={this.props.match.params.userId}
+              disabled
               type="Integer"
               className="form-control"
               placeholder="User Id"
             />
-            </div>
+          </div>
           <div className="input-group mb-3">
             <input
               ref={this.firstName}
@@ -112,20 +106,18 @@ class UpdateUser extends Component {
       </div>
     );
   }
-  }
+}
 
-  const mapStateToProps = (state) =>{
-    return{
-      message : state.message
-    }
-  }
-  
-  const mapDispatchToState = (dispatch)=>{
-  
-    return {
-      onUpdateUser : (payload) => dispatch(actions.EditUser(payload))
-    }
-  
-  }
-  
-  export default connect(mapStateToProps,mapDispatchToState)(UpdateUser)
+const mapStateToProps = (state) => {
+  return {
+    message: state.message,
+  };
+};
+
+const mapDispatchToState = (dispatch) => {
+  return {
+    onUpdateUser: (payload) => dispatch(actions.EditUser(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToState)(UpdateUser);

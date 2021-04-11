@@ -9,14 +9,13 @@ function DeleteApplication(props) {
   const handleSubmit = () => {
     const requestBody = {
       applicationId: applicationId,
-      };
+    };
 
     props.onDeleteApplication(requestBody);
   };
 
   return (
     <div style={{ padding: "50px", border: "5px solid" }}>
-      
       <TextField
         id="outlined-basic"
         label="Applicant Id"
@@ -26,12 +25,11 @@ function DeleteApplication(props) {
         value={applicationId}
         onChange={(e) => setapplicationId(e.target.value)}
       />
-     <Button
+      <Button
         variant="contained"
         color="primary"
         type="submit"
         style={{ margin: "10px" }}
-        //disabled={isDisabled}
         onClick={() => handleSubmit()}
       >
         Submit

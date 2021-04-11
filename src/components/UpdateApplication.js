@@ -15,27 +15,21 @@ function UpdateApplication(props) {
   const [schedule, setschedule] = useState("");
   const [applicationstatus, setapplicationstatus] = useState("");
   const [dateOfInterview, setdateOfInterview] = useState("");
-  const [InterviewFeedback, setInterviewFeedback ] = useState("");
-  
-
-  
+  const [InterviewFeedback, setInterviewFeedback] = useState("");
 
   const handleSubmit = () => {
     const requestBody = {
-      applicationId:id,
-      applicantFullName:name,
-      dateOfBirth:dob,
-      highestQualification:qualification,
-      finalYearPercentage:percentage,
-      goals:goals,
-      emailId:emailId,
-      
-      applicationStatus:applicationstatus,
-      dateOfInterview:dateOfInterview,
-      applicantInterviewFeedback:InterviewFeedback,
+      applicationId: id,
+      applicantFullName: name,
+      dateOfBirth: dob,
+      highestQualification: qualification,
+      finalYearPercentage: percentage,
+      goals: goals,
+      emailId: emailId,
 
-
-
+      applicationStatus: applicationstatus,
+      dateOfInterview: dateOfInterview,
+      applicantInterviewFeedback: InterviewFeedback,
     };
 
     props.onUpdateApplication(requestBody);
@@ -43,7 +37,6 @@ function UpdateApplication(props) {
 
   return (
     <div style={{ padding: "50px", border: "5px solid" }}>
-      
       <TextField
         id="outlined-basic"
         label="Applicant Id"
@@ -131,7 +124,7 @@ function UpdateApplication(props) {
         value={applicationstatus}
         onChange={(e) => setapplicationstatus(e.target.value)}
       />
-     <TextField
+      <TextField
         id="outlined-basic"
         label="Date Of Interview"
         type="date"
@@ -140,7 +133,8 @@ function UpdateApplication(props) {
         style={{ margin: "10px" }}
         value={dateOfInterview}
         InputLabelProps={{
-            shrink: true,}}
+          shrink: true,
+        }}
         onChange={(e) => setdateOfInterview(e.target.value)}
       />
       <TextField
@@ -150,7 +144,8 @@ function UpdateApplication(props) {
         fullWidth={false}
         style={{ margin: "10px" }}
         value={InterviewFeedback}
-        onChange={(e) => setInterviewFeedback(e.target.value)}s
+        onChange={(e) => setInterviewFeedback(e.target.value)}
+        s
       />
 
       <Button
@@ -158,7 +153,6 @@ function UpdateApplication(props) {
         color="primary"
         type="submit"
         style={{ margin: "10px" }}
-        //disabled={isDisabled}
         onClick={() => handleSubmit()}
       >
         Update

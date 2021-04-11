@@ -1,51 +1,45 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from '../actions/program';
-
+import * as actions from "../actions/program";
 
 class UpdateProgram extends Component {
   constructor() {
     super();
-    this.programId=React.createRef();
-    this.programName=React.createRef();
+    this.programId = React.createRef();
+    this.programName = React.createRef();
     this.eligibility = React.createRef();
-    this.duration= React.createRef();
-    this.degreeOffered=React.createRef();
-    this.state = {message: ''} 
+    this.duration = React.createRef();
+    this.degreeOffered = React.createRef();
+    this.state = { message: "" };
   }
 
   updateProgram() {
     console.log("updating...");
     var program = {
-        programId:this.programId.current.value,
-        programName: this.programName.current.value,
-        eligibility:this.eligibility.current.value,
-        duration:this.duration.current.value,
-        degreeOffered:this.degreeOffered.current.value
+      programId: this.programId.current.value,
+      programName: this.programName.current.value,
+      eligibility: this.eligibility.current.value,
+      duration: this.duration.current.value,
+      degreeOffered: this.degreeOffered.current.value,
     };
 
-    this.props.onUpdateProgram(program)
+    this.props.onUpdateProgram(program);
   }
-  componentDidMount()
-  {
-
-    
-
-  }
-  render(){
+  componentDidMount() {}
+  render() {
     return (
       <div>
         <div className="w-50 user-form">
-        <div className="input-group mb-3">
+          <div className="input-group mb-3">
             <input
               ref={this.programId}
-              value = {this.props.match.params.programId}
+              value={this.props.match.params.programId}
               disabled
               type="Integer"
               className="form-control"
               placeholder="programId"
             />
-            </div>
+          </div>
           <div className="input-group mb-3">
             <input
               ref={this.programName}
@@ -91,20 +85,18 @@ class UpdateProgram extends Component {
       </div>
     );
   }
-  }
+}
 
-  const mapStateToProps = (state) =>{
-    return{
-      message : state.message
-    }
-  }
-  
-  const mapDispatchToState = (dispatch)=>{
-  
-    return {
-      onUpdateProgram : (payload) => dispatch(actions.EditProgram(payload))
-    }
-  
-  }
-  
-  export default connect(mapStateToProps,mapDispatchToState)(UpdateProgram)
+const mapStateToProps = (state) => {
+  return {
+    message: state.message,
+  };
+};
+
+const mapDispatchToState = (dispatch) => {
+  return {
+    onUpdateProgram: (payload) => dispatch(actions.EditProgram(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToState)(UpdateProgram);

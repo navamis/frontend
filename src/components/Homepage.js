@@ -36,7 +36,7 @@ import AddApplication from "./AddApplication";
 import ViewApplication from "./ViewApplication";
 import UpdateApplication from "./UpdateApplication";
 import DeleteApplication from "./DeleteApplication";
-import Login from "./Login"
+import Login from "./Login";
 
 export default function Homepage() {
   return (
@@ -46,13 +46,11 @@ export default function Homepage() {
           <Navbar collapseOnSelect expand="xs" bg="dark" variant="dark">
             <Navbar.Brand href="#home">Online Admission System</Navbar.Brand>
             <ul className="navbar-nav float-right">
-              {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
               <Navbar.Collapse
                 id="responsive-navbar-nav"
                 variant="dark"
               ></Navbar.Collapse>
             </ul>
-           
 
             <NavDropdown title="LoginDetails" id="collasible-nav-dropdown">
               <Nav className="mr-auto">
@@ -71,7 +69,6 @@ export default function Homepage() {
                     Add Login
                   </NavLink>
                 </NavDropdown.Item>
-
                 <NavDropdown.Item href="#action/3.3" className="bg-secondary">
                   <NavLink className="nav-link" to="/login" variant="dark">
                     Logout
@@ -228,34 +225,49 @@ export default function Homepage() {
               </Nav>
             </NavDropdown>
 
-        <NavDropdown title="Application" id="collasible-nav-dropdown">
+            <NavDropdown title="Application" id="collasible-nav-dropdown">
               <Nav className="mr-auto">
                 <ul>
-                <NavDropdown.Item href="#action/3.1" className="bg-secondary">
-                  {" "}
-                  <NavLink className="nav-link active" aria-current="page" to="/viewapplication">
-                    View Application
-                  </NavLink>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2" className="bg-secondary">
-                  <NavLink className="nav-link active" to="/addapplication" variant="dark">
-                    Add Application
-                  </NavLink>
-                </NavDropdown.Item>
-                 <NavDropdown.Item href="#action/3.3" className="bg-secondary">
-                  <NavLink className="nav-link active" to="/deleteapplication" variant="dark">
-                    Delete Application
-                  </NavLink>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4" className="bg-secondary">
-                  <NavLink className="nav-link active" to="/updateapplication" variant="dark">
-                    Update Application
-                  </NavLink>
-                </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.1" className="bg-secondary">
+                    {" "}
+                    <NavLink
+                      className="nav-link active"
+                      aria-current="page"
+                      to="/viewapplication"
+                    >
+                      View Application
+                    </NavLink>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2" className="bg-secondary">
+                    <NavLink
+                      className="nav-link active"
+                      to="/addapplication"
+                      variant="dark"
+                    >
+                      Add Application
+                    </NavLink>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3" className="bg-secondary">
+                    <NavLink
+                      className="nav-link active"
+                      to="/deleteapplication"
+                      variant="dark"
+                    >
+                      Delete Application
+                    </NavLink>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4" className="bg-secondary">
+                    <NavLink
+                      className="nav-link active"
+                      to="/updateapplication"
+                      variant="dark"
+                    >
+                      Update Application
+                    </NavLink>
+                  </NavDropdown.Item>
                 </ul>
               </Nav>
             </NavDropdown>
-
 
             <NavDropdown title="Payment" id="collasible-nav-dropdown">
               <Nav className="mr-auto">
@@ -280,6 +292,10 @@ export default function Homepage() {
         </>
 
         <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+
           <Route exact path="/viewpayment">
             <ViewPayment />
           </Route>
@@ -305,10 +321,6 @@ export default function Homepage() {
           <Route path="/viewlogin">
             <ViewLogin />
           </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-
           <Route path="/change/:userId" component={ChangePassword}></Route>
 
           <Route path="/addcollege">
@@ -378,14 +390,12 @@ export default function Homepage() {
             component={UpdateProgramScheduled}
           ></Route>
 
-        
-         <Route path="/addapplication" component={AddApplication} />
-        <Route path="/updateapplication" component={UpdateApplication} />
-        <Route path="/viewapplication" component={ViewApplication} />
-        <Route path="/deleteapplication" component={DeleteApplication} />
-
+          <Route path="/addapplication" component={AddApplication} />
+          <Route path="/updateapplication" component={UpdateApplication} />
+          <Route path="/viewapplication" component={ViewApplication} />
+          <Route path="/deleteapplication" component={DeleteApplication} />
         </Switch>
       </Router>
-      </nav>
+    </nav>
   );
 }

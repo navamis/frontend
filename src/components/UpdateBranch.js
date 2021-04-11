@@ -1,39 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as branch from '../actions/branch';
+import * as branch from "../actions/branch";
 
 class UpdateBranch extends Component {
   constructor() {
     super();
-    this.branchId=React.createRef();
-    this.branchName=React.createRef();
-    this.branchDescription=React.createRef();
-        this.state = {message: ''}
+    this.branchId = React.createRef();
+    this.branchName = React.createRef();
+    this.branchDescription = React.createRef();
+    this.state = { message: "" };
   }
 
   updateBranch() {
     console.log("updating...");
 
     var branch = {
-        branchId:this.branchId.current.value,
-        branchName:this.branchName.current.value,
-        branchDescription:this.branchDescription.current.value,
-      //  isavailable: this.isavailable.current.value
-       
+      branchId: this.branchId.current.value,
+      branchName: this.branchName.current.value,
+      branchDescription: this.branchDescription.current.value,
     };
 
-    this.props.onUpdateBranch(branch)
-
+    this.props.onUpdateBranch(branch);
   }
 
-  componentDidMount()
-  {
-
-    
-
-  }
-  
-
+  componentDidMount() {}
 
   render() {
     return (
@@ -42,13 +32,13 @@ class UpdateBranch extends Component {
           <div className="input-group mb-3">
             <input
               ref={this.branchId}
-              value = {this.props.match.params.branchId}
+              value={this.props.match.params.branchId}
               disabled
               type="number"
               className="form-control"
               placeholder="branchId"
             />
-            </div>
+          </div>
           <div className="input-group mb-3">
             <input
               ref={this.branchName}
@@ -65,7 +55,7 @@ class UpdateBranch extends Component {
               placeholder="branchDescription"
             />
           </div>
-          
+
           <button
             className="add-btn btn btn-primary"
             onClick={this.updateBranch.bind(this)}
@@ -82,21 +72,16 @@ class UpdateBranch extends Component {
   }
 }
 
-
-const mapStateToProps = (state)=>{
-  
+const mapStateToProps = (state) => {
   return {
-   
-    message : state.message
-  }
-}
+    message: state.message,
+  };
+};
 
-const mapDispatchToState = (dispatch)=>{
-
+const mapDispatchToState = (dispatch) => {
   return {
-    onUpdateBranch : (payload) => dispatch(branch.EditBranch(payload))
-  }
+    onUpdateBranch: (payload) => dispatch(branch.EditBranch(payload)),
+  };
+};
 
-}
-
-export default connect(mapStateToProps,mapDispatchToState)(UpdateBranch)
+export default connect(mapStateToProps, mapDispatchToState)(UpdateBranch);

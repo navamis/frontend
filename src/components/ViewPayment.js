@@ -28,7 +28,7 @@ class ViewPayment extends Component {
           paymentDescription={payment.paymentDescription}
           paymentDate={payment.paymentDate}
           paymentStatus={payment.paymentStatus}
-          applicantFullName= {payment.application.applicantFullName}
+          applicantFullName={payment.application.applicantFullName}
           fetchData={this.fetchData.bind(this)}
         ></Payment>
       );
@@ -44,7 +44,7 @@ class ViewPayment extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    payments: state.payments || []
+    payments: state.payments || [],
   };
 };
 

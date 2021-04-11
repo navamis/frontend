@@ -1,27 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Address from "../components/Address"
+import Address from "../components/Address";
 
-import * as actions from '../actions/address'
+import * as actions from "../actions/address";
 
 class ViewAddress extends Component {
   constructor() {
     super();
     this.state = { addresses: [] };
   }
-  
-  fetchData()
-  {
 
-    console.log("fetching data.....")
-
+  fetchData() {
+    console.log("fetching data.....");
   }
 
   componentDidMount() {
-    this.props.onFetchAddresses()
+    this.props.onFetchAddresses();
   }
-
- 
 
   render() {
     var addressList = this.props.addresses.map((address, i) => {
@@ -30,12 +25,11 @@ class ViewAddress extends Component {
           key={address.addressId}
           addressId={address.addressId}
           district={address.district}
-           states={address.states}
+          states={address.states}
           city={address.city}
           country={address.country}
           zipcode={address.zipcode}
           landmark={address.landmark}
-          
           fetchData={this.fetchData.bind(this)}
         ></Address>
       );
@@ -49,17 +43,16 @@ class ViewAddress extends Component {
   }
 }
 
-
-const mapStateToProps = (state) =>{
-  return{
-    addresses : state.addresses
-  }
-}
-
-const mapDispatchToState = (dispatch) =>{
+const mapStateToProps = (state) => {
   return {
-    onFetchAddresses : () => dispatch(actions.fetchAddress())
-  }
-}
+    addresses: state.addresses,
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToState)(ViewAddress);
+const mapDispatchToState = (dispatch) => {
+  return {
+    onFetchAddresses: () => dispatch(actions.fetchAddress()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToState)(ViewAddress);

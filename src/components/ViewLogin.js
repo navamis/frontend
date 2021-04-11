@@ -1,25 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import LoginModule from "./LoginModule.js";
-import * as actions from '../actions/login'
+import * as actions from "../actions/login";
 
 class ViewLogin extends Component {
   constructor() {
     super();
     this.state = { logins: [] };
   }
-  
-  fetchData()
-  {
 
-    console.log("fetching data.....")
+  fetchData() {
+    console.log("fetching data.....");
   }
   componentDidMount() {
-    this.props.onFetchLogins()
-     document.body.style.backgroundColor = "skyblue";
+    this.props.onFetchLogins();
+    document.body.style.backgroundColor = "skyblue";
   }
-
- 
 
   render() {
     var loginsList = this.props.logins.map((login, i) => {
@@ -27,9 +23,7 @@ class ViewLogin extends Component {
         <LoginModule
           key={login.userId}
           userId={login.userId}
-          userName= {login.userName}        
-          
-         // password={login.password}
+          userName={login.userName}
           role={login.role}
           fetchData={this.fetchData.bind(this)}
         ></LoginModule>
@@ -44,18 +38,16 @@ class ViewLogin extends Component {
   }
 }
 
-
-const mapStateToProps = (state) =>{
-  return{
-    
-    logins : state.logins || []
-      }
-}
-
-const mapDispatchToState = (dispatch) =>{
+const mapStateToProps = (state) => {
   return {
-    onFetchLogins : () => dispatch(actions.fetchLogin())
-  }
-}
+    logins: state.logins || [],
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToState)(ViewLogin);
+const mapDispatchToState = (dispatch) => {
+  return {
+    onFetchLogins: () => dispatch(actions.fetchLogin()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToState)(ViewLogin);

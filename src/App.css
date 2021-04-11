@@ -37,7 +37,7 @@
   border: 2px solid rgb(223, 19, 19);
 }
 
-.badge{
+.badge {
   float: right;
 }
 
@@ -46,7 +46,7 @@
   transform: scale(1.05);
 }
 
-.user-form{
+.user-form {
   border: 2px solid rgb(245, 1, 1);
   border-radius: 50px;
   position: absolute;
@@ -56,26 +56,22 @@
   transform: translate(-40%, 29%);
 }
 
-.add-btn{
+.add-btn {
   border: 2px solid rgb(1, 25, 245);
   color: blue;
   left: 50%;
 }
 
-.navbar-brand
-{
-  color : rgb(255, 0, 0);
+.navbar-brand {
+  color: rgb(255, 0, 0);
   font-weight: bold;
   font-size: x-large;
   margin-left: initial;
 }
 
-.nav-item
-{
-  
+.nav-item {
   font-weight: bold;
   font-size: 15px;
-  
 }
 
 @keyframes App-logo-spin {

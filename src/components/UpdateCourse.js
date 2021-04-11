@@ -1,47 +1,41 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from '../actions/course';
-
+import * as actions from "../actions/course";
 
 class UpdateCourse extends Component {
   constructor() {
     super();
-    this.courseId=React.createRef();
-    this.courseName=React.createRef();
+    this.courseId = React.createRef();
+    this.courseName = React.createRef();
     this.eligibility = React.createRef();
-    this.state = {message: ''} 
+    this.state = { message: "" };
   }
 
   updateCourse() {
     console.log("updating...");
     var course = {
-        courseId: this.courseId.current.value,
-        courseName: this.courseName.current.value,
-        eligibility:this.eligibility.current.value
+      courseId: this.courseId.current.value,
+      courseName: this.courseName.current.value,
+      eligibility: this.eligibility.current.value,
     };
 
-    this.props.onUpdateCourse(course)
+    this.props.onUpdateCourse(course);
   }
-  componentDidMount()
-  {
-
-    
-
-  }
-  render(){
+  componentDidMount() {}
+  render() {
     return (
       <div>
         <div className="w-50 user-form">
-        <div className="input-group mb-3">
+          <div className="input-group mb-3">
             <input
               ref={this.courseId}
-              value = {this.props.match.params.courseId}
+              value={this.props.match.params.courseId}
               disabled
               type="Integer"
               className="form-control"
               placeholder="courseId"
             />
-            </div>
+          </div>
           <div className="input-group mb-3">
             <input
               ref={this.courseName}
@@ -71,20 +65,18 @@ class UpdateCourse extends Component {
       </div>
     );
   }
-  }
+}
 
-  const mapStateToProps = (state) =>{
-    return{
-      message : state.message
-    }
-  }
-  
-  const mapDispatchToState = (dispatch)=>{
-  
-    return {
-      onUpdateCourse : (payload) => dispatch(actions.EditCourse(payload))
-    }
-  
-  }
-  
-  export default connect(mapStateToProps,mapDispatchToState)(UpdateCourse)
+const mapStateToProps = (state) => {
+  return {
+    message: state.message,
+  };
+};
+
+const mapDispatchToState = (dispatch) => {
+  return {
+    onUpdateCourse: (payload) => dispatch(actions.EditCourse(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToState)(UpdateCourse);

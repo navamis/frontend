@@ -1,25 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import User from "./User.js";
-import * as actions from '../actions/user'
+import * as actions from "../actions/user";
 
 class ViewUser extends Component {
   constructor() {
     super();
     this.state = { users: [] };
   }
-  
-  fetchData()
-  {
 
-    console.log("fetching data.....")
+  fetchData() {
+    console.log("fetching data.....");
   }
   componentDidMount() {
-    this.props.onFetchUsers()
-     document.body.style.backgroundColor = "skyblue";
+    this.props.onFetchUsers();
+    document.body.style.backgroundColor = "skyblue";
   }
-
- 
 
   render() {
     var usersList = this.props.users.map((user, i) => {
@@ -27,12 +23,12 @@ class ViewUser extends Component {
         <User
           key={user.userId}
           userId={user.userId}
-          firstName= {user.firstName}
-          middleName= {user.middleName}
-          lastName= {user.lastName}
-          email= {user.email}
-          mobileNumber= {user.mobileNumber}
-          aadharCardNo= {user.aadharCardNo}
+          firstName={user.firstName}
+          middleName={user.middleName}
+          lastName={user.lastName}
+          email={user.email}
+          mobileNumber={user.mobileNumber}
+          aadharCardNo={user.aadharCardNo}
           fetchData={this.fetchData.bind(this)}
         ></User>
       );
@@ -46,17 +42,16 @@ class ViewUser extends Component {
   }
 }
 
-
-const mapStateToProps = (state) =>{
-  return{
-    users : state.users || []
-  }
-}
-
-const mapDispatchToState = (dispatch) =>{
+const mapStateToProps = (state) => {
   return {
-    onFetchUsers : () => dispatch(actions.fetchUser())
-  }
-}
+    users: state.users || [],
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToState)(ViewUser);
+const mapDispatchToState = (dispatch) => {
+  return {
+    onFetchUsers: () => dispatch(actions.fetchUser()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToState)(ViewUser);

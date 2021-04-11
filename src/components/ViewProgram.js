@@ -1,31 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Program from "./Program.js";
-import * as actions from '../actions/program'
+import * as actions from "../actions/program";
 
 class ViewProgram extends Component {
   constructor() {
     super();
     this.state = { programs: [] };
   }
-  
-  fetchData()
-  {
 
-    console.log("fetching data.....")
+  fetchData() {
+    console.log("fetching data.....");
   }
   componentDidMount() {
-    this.props.onFetchPrograms()
+    this.props.onFetchPrograms();
   }
 
- 
-
   render() {
-    // if(this.props.program===undefined){
-    //   return(
-    //     <h1>Loading....</h1>
-    //   )
-    // }
     var programsList = this.props.programs.map((program, i) => {
       return (
         <Program
@@ -48,17 +39,16 @@ class ViewProgram extends Component {
   }
 }
 
-
-const mapStateToProps = (state) =>{
-  return{
-    programs : state.programs||[]
-  }
-}
-
-const mapDispatchToState = (dispatch) =>{
+const mapStateToProps = (state) => {
   return {
-    onFetchPrograms : () => dispatch(actions.fetchPrograms())
-  }
-}
+    programs: state.programs || [],
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToState)(ViewProgram);
+const mapDispatchToState = (dispatch) => {
+  return {
+    onFetchPrograms: () => dispatch(actions.fetchPrograms()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToState)(ViewProgram);

@@ -12,7 +12,7 @@ export const addPayment = (payload) => {
     body: JSON.stringify(payload),
   };
   return (dispatch) => {
-    fetch("http://localhost:8075/payments", requestOptions).then((res) => {
+    fetch("http://localhost:8090/Api/payments", requestOptions).then((res) => {
       console.log(res);
       if (res.status === 201) {
         console.log("success");
@@ -32,7 +32,7 @@ export const fetchPayment = () => {
     headers: { "Content-Type": "application/json" },
   };
   return (dispatch) => {
-    fetch("http://localhost:8075/payments", requestOptions)
+    fetch("http://localhost:8090/Api/payments", requestOptions)
       .then((res) => {
         console.log(res);
         return res.json();
@@ -55,20 +55,19 @@ export const deletePayment = (id) => {
   };
   return (dispatch) => {
     let message = "";
-    fetch("http://localhost:8075/payment/" + id, requestOptions)
+    fetch("http://localhost:8090/Api/payment/" + id, requestOptions)
       .then((res) => {
         console.log(res);
 
         if (res.status === 200) {
           message = "succesfully deleted payment";
         } else message = "failed";
-
-        return res.json();
       })
       .then((data) => {
         console.log(data);
-        dispatch(removePayment({ payment: data, message }));
-      });
+        dispatch(removePayment({ payment: { id }, message }));
+      })
+      .catch((error) => console.error(error));
   };
 };
 
@@ -87,7 +86,7 @@ export const EditPayment = (payload) => {
     body: JSON.stringify(payload),
   };
   return (dispatch) => {
-    fetch("http://localhost:8075/payments", requestOptions).then((res) => {
+    fetch("http://localhost:8090/Api/payments", requestOptions).then((res) => {
       console.log(res);
       if (res.status === 200) {
         console.log("successfully updated");

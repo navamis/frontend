@@ -1,7 +1,6 @@
- import React, { Component } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from '../actions/login';
-
+import * as actions from "../actions/login";
 
 class ChangePassword extends Component {
   constructor() {
@@ -10,48 +9,41 @@ class ChangePassword extends Component {
     this.password = React.createRef();
     this.userName = React.createRef();
     this.role = React.createRef();
-    this.state = { user : {},message: "" };
+    this.state = { user: {}, message: "" };
   }
 
-  
-   changePassword(){
-     console.log("changing...");
+  changePassword() {
+    console.log("changing...");
 
     var login = {
       userId: this.userId.current.value,
       userName: this.userName.current.value,
       password: this.password.current.value,
       role: this.role.current.value,
-      
     };
 
-    this.props.onChangePassword(login)
+    this.props.onChangePassword(login);
   }
-  componentDidMount()
-  {
-
-    
-
-  }
-  render(){
+  componentDidMount() {}
+  render() {
     return (
       <div>
         <div className="w-50 user-form">
-        <div className="input-group mb-3">
+          <div className="input-group mb-3">
             <input
               ref={this.userId}
-               value = {this.props.match.params.userId}
-               disabled
+              value={this.props.match.params.userId}
+              disabled
               type="Integer"
               className="form-control"
               placeholder="User Id"
             />
-            </div>
-            <div className="input-group mb-3">
+          </div>
+          <div className="input-group mb-3">
             <input
               ref={this.userName}
-                value = {this.props.match.params.userName}
-                disabled
+              value={this.props.match.params.userName}
+              disabled
               type="text"
               className="form-control"
               placeholder="Name"
@@ -61,24 +53,22 @@ class ChangePassword extends Component {
             <input
               ref={this.password}
               type="password"
-              className="form-control"  
+              className="form-control"
               placeholder="Password"
             />
           </div>
-         
+
           <div className="input-group mb-3">
-           <input
+            <input
               ref={this.role}
-               value = {this.props.match.params.role}
-               disabled
+              value={this.props.match.params.role}
+              disabled
               type="Integer"
               className="form-control"
               placeholder="Role"
             />
-            </div>
-          
-          
-          
+          </div>
+
           <button
             className="add-btn btn btn-primary"
             onClick={this.changePassword.bind(this)}
@@ -92,20 +82,18 @@ class ChangePassword extends Component {
       </div>
     );
   }
-  }
+}
 
-  const mapStateToProps = (state) =>{
-    return{
-      message : state.message
-    }
-  }
-  
-  const mapDispatchToState = (dispatch)=>{
-  
-    return {
-      onChangePassword : (payload) => dispatch(actions.ChangePassword(payload))
-    }
-  
-  }
-  
-  export default connect(mapStateToProps,mapDispatchToState)(ChangePassword)
+const mapStateToProps = (state) => {
+  return {
+    message: state.message,
+  };
+};
+
+const mapDispatchToState = (dispatch) => {
+  return {
+    onChangePassword: (payload) => dispatch(actions.ChangePassword(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToState)(ChangePassword);

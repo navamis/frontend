@@ -22,12 +22,12 @@ function AddApplication(props) {
 
   const handleSubmit = () => {
     const requestBody = {
-      applicantFullName:name,
-      dateOfBirth:dob,
-      highestQualification:qualification,
-      finalYearPercentage:percentage,
-      goals:goals,
-      emailId:emailId,
+      applicantFullName: name,
+      dateOfBirth: dob,
+      highestQualification: qualification,
+      finalYearPercentage: percentage,
+      goals: goals,
+      emailId: emailId,
     };
 
     props.onCreateApplication(requestBody);
